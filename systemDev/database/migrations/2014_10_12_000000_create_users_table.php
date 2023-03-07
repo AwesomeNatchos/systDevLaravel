@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Database\Seeders\DatabaseSeeder;
+use Database\Seeders\UserSeeder;
 
 return new class extends Migration
 {
@@ -15,13 +17,26 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->date('dob');
+            $table->string('username')->uniqid();
+            $table->string('confirmation_code')->nullable();;
+            $table->timestamp('confirmation_expire')->nullable();;
+            $table->boolean('license_accepted')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
+
+        //Boring synthax
+        //$userSeeder = new UserSeeder();
+        //$userSeeder->run()
+
+        //Cool synthax
+        (new UserSeeder())->run();
     }
 
     /**
