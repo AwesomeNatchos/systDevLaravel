@@ -1,0 +1,5 @@
+factory: patch together objects from ORM into new <!-- Button trigger modal -->
+controller: connects end points 
+seed: to check out end points are working (API)
+
+calling seeder (fills the DB with dummy sample data)
